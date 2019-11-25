@@ -15,10 +15,19 @@ connection.connect(function(err){
 })
 
 var start = function(){
+    connection.query("SELECT * FROM products", function (err, results) {
+        if (err) throw err;
+        for (var i = 0; i < results.length; i++) {
+            console.log("---------------")
+            console.log("ID number: " + results[i].id)
+            console.log("Product Name: " + results[i].product_name)
+            console.log("Price: $" + results[i].price)
+        }
+        input();
 
-
+        })
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 ​
 ​
