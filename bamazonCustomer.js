@@ -14,20 +14,56 @@ connection.connect(function(err){
 
 })
 
-var start = function(){
+function start(){
+
     connection.query("SELECT * FROM products", function (err, results) {
         if (err) throw err;
         for (var i = 0; i < results.length; i++) {
             console.log("---------------")
             console.log("ID number: " + results[i].id)
-            console.log("Product Name: " + results[i].product_name)
+            console.log("Product Name: " + results[i].name)
             console.log("Price: $" + results[i].price)
         }
         input();
 
         })
-}
+        function input() {
+            inquirer
+                .prompt([
+                    {
+                        name: "idchoice",
+                        type: "input",
+                        message: "If you would like to purchase a product, please input the product's ID number:"
+                    }
+                    ,
+                    {
+                        name: "quantity",
+                        type: "input",
+                        message: "How many would you like to buy?"
+                    }
+                ])
+                .then(function(answer) {
+                    connection.query("SELECT * FROM products WHERE id = ?", 
+                    [
+                        parseInt(answer.idchoice)
+                    ],
+                      function(err, res) {
+                        if (err) throw err;
+                        var quantity = parseInt(res[0].stock_quantity)
+                        // console.log(quantity)
+                        if (quantity <= parseInt(answer.quantity)) {
+                            console.log("Insufficient quantity!")
+                        }
+                        else if (quantity >= parseInt(res[0].stock_quantity)) {
+                            var total = parseInt(res[0].price) * parseInt(answer.quantity)
+                            console.log("Your purchase was successful! Your total was $" + total + ". Thank you for shopping with us.")
+                        }
+                      }
+                    );
 
+                });
+            }
+        }       
 
 ​
 ​

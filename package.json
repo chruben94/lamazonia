@@ -1,0 +1,26 @@
+{
+  "name": "lamazonia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bamazonCustomer.js",
+  "dependencies": {
+    "inquire": "^0.4.8"
+  },
+  "devDependencies": {
+    "inquirer": "^7.0.0",
+    "mysql": "^2.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chruben94/lamazonia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chruben94/lamazonia/issues"
+  },
+  "homepage": "https://github.com/chruben94/lamazonia#readme"
+}
