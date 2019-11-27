@@ -31,21 +31,21 @@ function start(){
             inquirer
                 .prompt([
                     {
-                        name: "idchoice",
+                        name: "chooseid",
                         type: "input",
-                        message: "If you would like to purchase a product, please input the product's ID number:"
+                        message: "Please input the ID of the product you would like to purchase:"
                     }
                     ,
                     {
                         name: "quantity",
                         type: "input",
-                        message: "How many would you like to buy?"
+                        message: "How many would you like to purchase?"
                     }
                 ])
                 .then(function(answer) {
                     connection.query("SELECT * FROM products WHERE id = ?", 
                     [
-                        parseInt(answer.idchoice)
+                        parseInt(answer.chooseid)
                     ],
                       function(err, res) {
                         if (err) throw err;
@@ -56,7 +56,7 @@ function start(){
                         }
                         else if (quantity >= parseInt(res[0].stock_quantity)) {
                             var total = parseInt(res[0].price) * parseInt(answer.quantity)
-                            console.log("Your purchase was successful! Your total was $" + total + ". Thank you for shopping with us.")
+                            console.log("Your order has been confirmed! Your total was $" + total + ". Thank you for shopping with Bamazon.")
                         }
                       }
                     );
