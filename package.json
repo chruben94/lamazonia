@@ -4,7 +4,8 @@
   "description": "",
   "main": "bamazonCustomer.js",
   "dependencies": {
-    "inquire": "^0.4.8"
+    "inquire": "^0.4.8",
+    "requirer": "0.0.4"
   },
   "devDependencies": {
     "inquirer": "^7.0.0",
