@@ -8,8 +8,8 @@
     "requirer": "0.0.4"
   },
   "devDependencies": {
-    "inquirer": "^7.0.0",
-    "mysql": "^2.17.1"
+    "inquirer": "^7.0.4",
+    "mysql": "^2.18.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
